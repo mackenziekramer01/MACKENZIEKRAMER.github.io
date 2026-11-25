@@ -1,21 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Research exploring geographic disparities in Alzheimer's disease and related dementias through population health research and machine learning.">
-  <title>ADRD Research | Mackenzie Kramer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A research case study examining geographic variation in Alzheimer's disease dementia prevalence and the relationship between community environments and social vulnerability." />
+  <title>Geographic Patterns in Alzheimer's Disease | Mackenzie Kramer</title>
 
   <style>
     :root {
-      --cream: #f7f5ef;
-      --paper: #fffefa;
-      --green: #294b3c;
-      --green-light: #e8eee8;
-      --ink: #292d29;
-      --muted: #777b73;
-      --line: #deded5;
-      --serif: Georgia, "Times New Roman", serif;
+      --paper: #f7f5ef;
+      --paper-deep: #eeece3;
+      --ink: #252a25;
+      --muted: #626a60;
+      --green: #345344;
+      --green-light: #dfe7df;
+      --line: #d8d8ce;
+      --white: #fffefa;
+      --serif: Georgia, 'Times New Roman', serif;
       --sans: Arial, Helvetica, sans-serif;
     }
 
@@ -25,663 +27,810 @@
 
     body {
       margin: 0;
-      background: var(--cream);
+      background: var(--paper);
       color: var(--ink);
       font-family: var(--sans);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; }
+    a {
+      color: var(--green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
 
-    .container {
-      width: min(1000px, 88%);
+    a:hover { color: #1e382b; }
+
+    .site-header, main, .site-footer {
+      width: min(1080px, calc(100% - 48px));
       margin: 0 auto;
     }
 
-    header {
-      padding: 25px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav {
+    .site-header {
+      padding: 28px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid var(--line);
     }
 
-    nav a {
-      color: var(--green);
+    .brand {
+      color: var(--ink);
       font-family: var(--serif);
+      font-size: 18px;
       text-decoration: none;
-      font-size: 20px;
     }
 
     .back-link {
-      font-family: var(--sans);
       font-size: 12px;
-      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
     }
 
     .hero {
-      padding: 95px 0 75px;
+      padding: 104px 0 76px;
       max-width: 850px;
     }
 
     .eyebrow {
       color: var(--green);
       font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
+      font-weight: 700;
+      letter-spacing: .16em;
       text-transform: uppercase;
+      margin-bottom: 22px;
     }
 
     h1, h2, h3 {
       font-family: var(--serif);
-      font-weight: normal;
-      line-height: 1.25;
+      font-weight: 400;
+      line-height: 1.16;
     }
 
     h1 {
-      margin: 18px 0;
-      font-size: clamp(40px, 6vw, 61px);
-      letter-spacing: -1.5px;
+      font-size: clamp(42px, 6vw, 72px);
+      letter-spacing: -.035em;
+      margin: 0 0 24px;
+      max-width: 850px;
     }
 
-    .subtitle {
-      max-width: 680px;
+    .hero-deck {
+      max-width: 700px;
       color: var(--muted);
       font-family: var(--serif);
-      font-size: 22px;
-      line-height: 1.6;
+      font-size: clamp(19px, 2.4vw, 24px);
+      line-height: 1.55;
+      margin: 0;
     }
 
-    .tags {
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 25px;
-    }
-
-    .tag {
-      padding: 5px 11px;
-      border: 1px solid #d1d8d0;
-      border-radius: 20px;
-      color: var(--green);
-      font-size: 11px;
-    }
-
-    .hero-image {
-      width: 100%;
-      aspect-ratio: 16 / 7;
-      object-fit: cover;
-      background: var(--green-light);
-      margin-top: 25px;
-    }
-
-    .intro-band {
-      padding: 42px 0;
-      background: var(--green);
-      color: var(--cream);
-    }
-
-    .intro-band p {
-      max-width: 800px;
-      margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(21px, 3vw, 28px);
-      line-height: 1.65;
+      gap: 10px 26px;
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
     }
 
     .section {
-      padding: 75px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 68px 0;
+      border-top: 1px solid var(--line);
     }
 
     .section-heading {
-      max-width: 700px;
-      margin-bottom: 35px;
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 36px;
+      margin-bottom: 34px;
     }
 
-    .section-heading h2 {
-      margin: 10px 0;
-      font-size: 39px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-    }
-
-    .content {
-      max-width: 760px;
-    }
-
-    .content p {
-      color: #555c54;
-      margin-bottom: 20px;
-    }
-
-    .study {
-      padding: 32px;
-      margin: 30px 0;
-      background: var(--paper);
-      border: 1px solid var(--line);
-    }
-
-    .study h3 {
-      margin: 10px 0;
+    .section-number {
       color: var(--green);
-      font-size: 27px;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding-top: 9px;
     }
 
-    .study-meta {
+    h2 {
+      font-size: clamp(30px, 4vw, 43px);
+      margin: 0;
+      letter-spacing: -.02em;
+    }
+
+    h3 {
+      font-size: 27px;
+      margin: 0 0 14px;
+    }
+
+    p { margin: 0 0 18px; }
+
+    .lead {
+      max-width: 760px;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .body-copy {
+      max-width: 740px;
+      color: #454d45;
+    }
+
+    .figure {
+      margin: 36px 0 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 18px;
+    }
+
+    .figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .figure figcaption {
       color: var(--muted);
       font-size: 12px;
+      line-height: 1.55;
+      padding: 14px 4px 2px;
     }
 
-    .study a {
-      display: inline-block;
-      margin-top: 12px;
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .study-label {
       color: var(--green);
-      font-size: 13px;
-      text-decoration: none;
-      border-bottom: 1px solid #aab9ac;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
 
-    .workflow {
+    .insight-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .workflow-card {
-      padding: 22px;
-      background: var(--paper);
+      gap: 1px;
+      background: var(--line);
       border: 1px solid var(--line);
+      margin-top: 34px;
     }
 
-    .workflow-card .number {
-      color: #8b9d8e;
-      font-family: var(--serif);
-      font-size: 30px;
-    }
-
-    .workflow-card h3 {
-      margin: 8px 0;
-      font-size: 21px;
-    }
-
-    .workflow-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .findings {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 30px;
-    }
-
-    .finding {
-      padding: 25px;
+    .insight {
       background: var(--paper);
-      border: 1px solid var(--line);
+      padding: 26px 24px 28px;
     }
 
-    .finding strong {
-      display: block;
-      margin-bottom: 8px;
+    .insight .index {
       color: var(--green);
-      font-family: var(--serif);
-      font-size: 30px;
-      font-weight: normal;
+      font-size: 11px;
+      letter-spacing: .12em;
+      margin-bottom: 16px;
     }
 
-    .finding p {
-      margin: 0;
+    .insight h3 {
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .insight p {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
+      margin: 0;
     }
 
-    .reflection {
-      padding: 45px;
-      background: var(--green-light);
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 34px 0;
     }
 
-    .reflection p {
-      max-width: 760px;
+    .stat {
+      border-top: 2px solid var(--green);
+      padding-top: 14px;
+    }
+
+    .stat strong {
+      display: block;
       font-family: var(--serif);
-      font-size: 22px;
-      line-height: 1.8;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.1;
     }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .note {
+      background: var(--green-light);
+      padding: 26px 30px;
+      margin-top: 32px;
+      max-width: 850px;
+    }
+
+    .note p:last-child { margin-bottom: 0; }
 
     .publications {
       display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
+      margin-top: 28px;
     }
 
     .publication {
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
     }
 
-    .publication h3 {
-      margin: 8px 0;
+    .publication .pub-type {
       color: var(--green);
-      font-size: 22px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
+
+    .publication h3 { font-size: 21px; }
 
     .publication p {
       color: var(--muted);
       font-size: 13px;
     }
 
-    .publication a {
-      color: var(--green);
-      font-size: 13px;
+    .closing {
+      max-width: 760px;
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.5;
     }
 
-    footer {
-      padding: 30px 0;
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 48px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
       color: var(--muted);
-      font-size: 11px;
-      text-align: center;
+      font-size: 12px;
     }
 
     @media (max-width: 700px) {
-      .workflow,
-      .findings {
-        grid-template-columns: 1fr;
+      .site-header, main, .site-footer {
+        width: min(100% - 36px, 1080px);
       }
 
-      .hero { padding: 65px 0 50px; }
+      .hero { padding: 76px 0 58px; }
 
-      .section { padding: 55px 0; }
+      .section { padding: 52px 0; }
 
-      .study,
-      .reflection { padding: 24px; }
+      .section-heading {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
 
-      nav { gap: 20px; }
+      .two-col, .publications {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .insight-grid { grid-template-columns: 1fr; }
+
+      .stat-row { grid-template-columns: 1fr 1fr; }
+
+      .figure { padding: 10px; }
+
+      .site-footer { flex-direction: column; }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container">
-    <nav>
-      <a href="index.html">Mackenzie Kramer</a>
-      <a class="back-link" href="index.html#projects">
-        ← Back to portfolio
-      </a>
-    </nav>
-  </div>
-</header>
+  <header class="site-header">
+    <a class="brand" href="index.html">Mackenzie Kramer</a>
+    <a class="back-link" href="index.html#projects">← Back to selected work</a>
+  </header>
 
-<main>
+  <main>
 
-  <!-- PROJECT INTRODUCTION -->
-  <section class="container hero">
-    <div class="eyebrow">Selected Research · Population Health</div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">Population Health · Research · Machine Learning</div>
 
-    <h1>Understanding Geographic Disparities in Alzheimer's Disease and Related Dementias</h1>
+      <h1>Understanding the geography of Alzheimer's disease</h1>
 
-    <p class="subtitle">
-      Connecting population health research, community environments,
-      and machine learning to better understand geographic differences
-      in Alzheimer's disease burden.
-    </p>
-
-    <div class="tags">
-      <span class="tag">Population Health</span>
-      <span class="tag">Public Health Research</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Geographic Analysis</span>
-    </div>
-
-    <img
-      class="hero-image"
-      src="assets/images/adrd-map.png"
-      alt="Geographic visualization of Alzheimer's disease research"
-    >
-  </section>
-
-  <!-- CENTRAL QUESTION -->
-  <section class="intro-band">
-    <div class="container">
-      <p>
-        Health does not exist in isolation. The communities people live
-        in, the resources available to them, and the environments they
-        navigate all contribute to the broader context of health.
-        This research explored how those connections might help us
-        better understand geographic differences in Alzheimer's disease.
+      <p class="hero-deck">
+        Exploring how rural–urban patterns, community environments,
+        and social vulnerability intersect with Alzheimer's disease
+        dementia prevalence across the United States.
       </p>
-    </div>
-  </section>
 
-  <!-- BACKGROUND -->
-  <section class="section">
-    <div class="container">
+      <div class="hero-meta">
+        <span>First-author research</span>
+        <span>Evidence synthesis + county-level modeling</span>
+        <span>2025 publications</span>
+      </div>
+    </section>
+
+
+    <!-- THE QUESTION -->
+    <section class="section">
+
       <div class="section-heading">
-        <div class="eyebrow">01 · The question</div>
-        <h2>Looking beyond the individual.</h2>
-      </div>
-
-      <div class="content">
-        <p>
-          Alzheimer's disease and related dementias (ADRD) represent
-          a growing public health challenge. Yet the burden of disease
-          is not distributed evenly across geographic communities.
-          Rural and urban populations can experience different health
-          outcomes, access to care, and social and environmental conditions.
-        </p>
-
-        <p>
-          I became interested in understanding what existing research
-          could tell us about these disparities, where important gaps
-          remained, and how community-level characteristics might
-          contribute to the geographic patterns we observe.
-        </p>
-
-        <p>
-          This work developed across two complementary research efforts:
-          a scoping review of rural–urban ADRD disparities and a
-          machine learning study examining built-environment and
-          social-vulnerability characteristics across U.S. counties.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- STUDY ONE -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">02 · Evidence synthesis</div>
-        <h2>What does the existing research tell us?</h2>
-      </div>
-
-      <div class="content">
-        <p>
-          The first study examined the scope of published research
-          on rural–urban disparities in ADRD-related health outcomes.
-          Using a structured scoping review process, we searched five
-          research databases and synthesized findings across the
-          literature.
-        </p>
-
-        <p>
-          The review identified recurring geographic disparities,
-          differences in the ways rurality was defined, and gaps in
-          research examining environmental and lifestyle factors.
-          Much of the existing literature relied on traditional
-          statistical approaches, leaving opportunities for more
-          advanced analytical methods.
-        </p>
-
-        <p>
-          One takeaway stood out: understanding geographic disparities
-          requires looking beyond where disease burden is concentrated.
-          We also need to better understand the social, environmental,
-          and structural conditions surrounding those communities.
-        </p>
-      </div>
-
-      <div class="study">
-        <div class="eyebrow">Published scoping review · 2025</div>
-        <h3>Rural–urban disparities of Alzheimer's disease and related dementias: A scoping review</h3>
-        <p class="study-meta">
-          Alzheimer's & Dementia: Translational Research & Clinical Interventions
-          · First author
-        </p>
-        <a href="https://doi.org/10.1002/trc2.70047"
-           target="_blank" rel="noopener noreferrer">
-          Read the publication →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- STUDY TWO -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">03 · Quantitative investigation</div>
-        <h2>Exploring the role of community environments.</h2>
-      </div>
-
-      <div class="content">
-        <p>
-          Building on questions raised by the literature, the second
-          study investigated whether characteristics of the built
-          environment and social vulnerability could help predict
-          county-level Alzheimer's disease dementia prevalence
-          across the United States.
-        </p>
-
-        <p>
-          The analysis brought together county-level built-environment
-          indicators and Social Vulnerability Index (SVI) variables.
-          Rather than assuming that the same factors would matter
-          everywhere, models were developed at both national and
-          regional levels.
-        </p>
-
-        <p>
-          Random Forest and XGBoost models were used to investigate
-          predictive relationships. SHAP values helped interpret
-          the relative contribution of different variables to
-          model predictions.
-        </p>
-      </div>
-
-      <div class="workflow">
-        <div class="workflow-card">
-          <div class="number">01</div>
-          <h3>Bring data together</h3>
-          <p>
-            Combine county-level built-environment measures and
-            social vulnerability indicators.
-          </p>
-        </div>
-
-        <div class="workflow-card">
-          <div class="number">02</div>
-          <h3>Explore patterns</h3>
-          <p>
-            Apply Random Forest and XGBoost models nationally
-            and across geographic regions.
-          </p>
-        </div>
-
-        <div class="workflow-card">
-          <div class="number">03</div>
-          <h3>Interpret findings</h3>
-          <p>
-            Use SHAP to examine variable contributions and
-            differences in regional model behavior.
-          </p>
+        <div class="section-number">01 / The question</div>
+        <div>
+          <h2>Where we live is part of the health story.</h2>
         </div>
       </div>
 
-      <div class="study">
-        <div class="eyebrow">Published research · 2025</div>
-        <h3>The role of built and social environments in Alzheimer's disease dementia prevalence in the United States: A machine learning approach</h3>
-        <p class="study-meta">
-          Journal of Alzheimer's Disease · First author
+      <div class="body-copy">
+        <p class="lead">
+          Alzheimer's disease dementia is often discussed through
+          individual risk factors. But health is also shaped by the
+          places people live: the resources available to them, the
+          design of their communities, and the social and economic
+          conditions that influence daily life.
         </p>
-        <a href="https://doi.org/10.1177/13872877251372144"
-           target="_blank" rel="noopener noreferrer">
-          Read the publication →
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- FINDINGS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">04 · What emerged</div>
-        <h2>Geographic context matters.</h2>
         <p>
-          The models revealed meaningful differences in how
-          built-environment and social-vulnerability variables
-          contributed to predictions across U.S. regions.
+          This research brought together two related questions.
+          What does the evidence tell us about rural–urban differences
+          in Alzheimer's disease and related dementias? And can
+          county-level characteristics of the built and social
+          environments help explain geographic variation in
+          Alzheimer's disease dementia prevalence?
         </p>
       </div>
 
-      <div class="findings">
-        <div class="finding">
+      <!-- IMAGE 1: COUNTY-LEVEL MAP -->
+      <figure class="figure">
+        <img
+          src="assets/images/Figure1.pdf"
+          alt="County-level map of estimated Alzheimer's disease dementia prevalence across the United States"
+        />
+
+        <figcaption>
+          <strong>
+            Geographic distribution of estimated Alzheimer's disease
+            dementia prevalence by U.S. county.
+          </strong>
+          Add the prevalence data source, estimate year, and map
+          methodology here when the final map is placed.
+        </figcaption>
+      </figure>
+
+    </section>
+
+
+    <!-- SCOPING REVIEW -->
+    <section class="section">
+
+      <div class="section-heading">
+        <div class="section-number">02 / Evidence synthesis</div>
+        <div>
+          <h2>First, understand what is already known.</h2>
+        </div>
+      </div>
+
+      <div class="two-col">
+
+        <div>
+          <div class="study-label">Study one · Scoping review</div>
+          <h3>Rural–urban disparities in ADRD</h3>
+        </div>
+
+        <div class="body-copy">
+          <p>
+            The scoping review examined research published since 2000
+            on rural–urban disparities in Alzheimer's disease and
+            related dementias. Following PRISMA-ScR guidance, the
+            review brought together evidence across five databases
+            to understand how disparities have been studied and
+            where important gaps remain.
+          </p>
+
+          <p>
+            Across the literature, many studies reported higher
+            Alzheimer's disease or dementia prevalence or incidence
+            in rural areas, although findings were not consistent.
+            Differences in how studies defined and classified
+            rurality made comparisons difficult.
+          </p>
+
+          <p>
+            The review also highlighted that research had focused
+            more heavily on individual and demographic risk factors
+            than on environmental and lifestyle influences. That gap
+            helped motivate the next part of the work.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="insight-grid">
+
+        <article class="insight">
+          <div class="index">01 / PATTERNS</div>
+          <h3>Geography matters</h3>
+          <p>
+            Many studies reported greater burden in rural settings,
+            but the direction and size of differences varied
+            across studies.
+          </p>
+        </article>
+
+        <article class="insight">
+          <div class="index">02 / COMPARABILITY</div>
+          <h3>Definitions shape findings</h3>
+          <p>
+            Inconsistent rural–urban classification systems made
+            it harder to compare results and draw a unified picture.
+          </p>
+        </article>
+
+        <article class="insight">
+          <div class="index">03 / RESEARCH GAPS</div>
+          <h3>Look beyond the individual</h3>
+          <p>
+            Environmental and lifestyle factors remained
+            comparatively underexplored, creating an opportunity
+            for broader geographic analysis.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- MACHINE LEARNING STUDY -->
+    <section class="section">
+
+      <div class="section-heading">
+        <div class="section-number">03 / County-level analysis</div>
+        <div>
+          <h2>Then, examine the community context.</h2>
+        </div>
+      </div>
+
+      <div class="two-col">
+
+        <div>
+          <div class="study-label">Study two · Machine learning</div>
+          <h3>Built and social environments across U.S. counties</h3>
+        </div>
+
+        <div class="body-copy">
+          <p>
+            The second study examined cross-sectional associations
+            between county-level Alzheimer's disease dementia
+            prevalence and two sets of community characteristics:
+            built-environment measures and the CDC/ATSDR Social
+            Vulnerability Index (SVI).
+          </p>
+
+          <p>
+            Built-environment measures were organized around the
+            5D framework: density, diversity, design, destination
+            accessibility, and distance to transit. Additional
+            measures included grocery and convenience store access
+            and hospital access. SVI variables represented dimensions
+            such as socioeconomic status, household composition,
+            and housing and transportation.
+          </p>
+
+          <p>
+            Random Forest and XGBoost models were developed nationally
+            and regionally. SHAP values were used to interpret the
+            relative contribution of variables to model predictions.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="stat-row">
+
+        <div class="stat">
+          <strong>3,142</strong>
+          <span>U.S. counties represented</span>
+        </div>
+
+        <div class="stat">
+          <strong>2</strong>
+          <span>Machine learning approaches: Random Forest and XGBoost</span>
+        </div>
+
+        <div class="stat">
+          <strong>4</strong>
+          <span>U.S. regions analyzed</span>
+        </div>
+
+        <div class="stat">
+          <strong>15</strong>
+          <span>Variables retained in the combined model</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FINDINGS -->
+    <section class="section">
+
+      <div class="section-heading">
+        <div class="section-number">04 / What emerged</div>
+        <div>
+          <h2>The strongest signals differed by region.</h2>
+        </div>
+      </div>
+
+      <div class="body-copy">
+        <p class="lead">
+          The combined built-environment and social-vulnerability
+          model performed differently across regions. The Northeast
+          showed the strongest predictive fit, while the variables
+          contributing most to predictions were not the same from
+          one region to another.
+        </p>
+      </div>
+
+      <div class="stat-row">
+
+        <div class="stat">
           <strong>0.92</strong>
-          <p>
-            Northeast XGBoost model R², the highest regional
-            predictive performance in the study.
-          </p>
+          <span>Northeast XGBoost R²</span>
         </div>
 
-        <div class="finding">
+        <div class="stat">
           <strong>0.73</strong>
+          <span>South XGBoost R²</span>
+        </div>
+
+        <div class="stat">
+          <strong>0.72</strong>
+          <span>Midwest XGBoost R²</span>
+        </div>
+
+        <div class="stat">
+          <strong>0.72</strong>
+          <span>West XGBoost R²</span>
+        </div>
+
+      </div>
+
+      <!-- IMAGE 2: ORIGINAL FIGURE 3 -->
+      <figure class="figure">
+        <img
+          src="assets/images/Figure2.png"
+          alt="Figure 3 from the published study showing the top XGBoost variables associated with Alzheimer's disease dementia prevalence across U.S. regions"
+        />
+
+        <figcaption>
+          <strong>Regional feature importance from the XGBoost models.</strong>
+          Reproduced from Kramer, Alekseyenko, and Mollalo (2025),
+          Figure 3, page 1700. The figure compares the most influential
+          built-environment and social-vulnerability variables across
+          the West, Midwest, South, and Northeast.
+        </figcaption>
+      </figure>
+
+      <div class="insight-grid">
+
+        <article class="insight">
+          <div class="index">NORTHEAST</div>
+          <h3>Built environment</h3>
           <p>
-            South XGBoost model R², compared with 0.72 in both
-            the West and Midwest.
+            Built-environment variables alone explained much of
+            the model's predictive variation. Grocery store counts
+            and walkability were among the influential variables.
           </p>
+        </article>
+
+        <article class="insight">
+          <div class="index">SOUTH</div>
+          <h3>Social vulnerability</h3>
+          <p>
+            The built-environment-only model performed poorly,
+            but improved substantially when SVI variables were
+            added. No-vehicle households, single-parent households,
+            and lack of insurance were among the prominent variables.
+          </p>
+        </article>
+
+        <article class="insight">
+          <div class="index">MIDWEST + WEST</div>
+          <h3>A more balanced picture</h3>
+          <p>
+            Built-environment and social-vulnerability variables
+            both contributed to model predictions, with patterns
+            varying across the two regions.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="note">
+        <p>
+          <strong>How to read these results.</strong>
+          The regional R² values describe model fit on held-out
+          test data; they do not measure the proportion of
+          Alzheimer's disease cases caused by these variables.
+          SHAP values help interpret how features contributed
+          to model predictions, but they do not establish
+          causal effects.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- IMPLICATIONS -->
+    <section class="section">
+
+      <div class="section-heading">
+        <div class="section-number">05 / Why it matters</div>
+        <div>
+          <h2>Public health questions are rarely one-size-fits-all.</h2>
         </div>
       </div>
 
-      <div class="content" style="margin-top: 35px;">
+      <div class="body-copy">
         <p>
-          In the Northeast, built-environment measures alone
-          explained much of the model's predictive variation,
-          with grocery store density and walkability emerging
-          as influential variables.
+          The findings suggest that the community characteristics
+          most useful for understanding Alzheimer's disease dementia
+          prevalence may depend on regional context. In the more
+          urbanized Northeast, built-environment measures such as
+          grocery store access and walkability were more influential.
+          In the South, social-vulnerability measures played a
+          stronger role in the combined model. In the Midwest and
+          West, both groups of variables contributed.
         </p>
 
         <p>
-          In the South, built-environment-only models performed
-          less well, but predictive performance improved
-          substantially when social-vulnerability measures
-          were included. In the Midwest and West, both groups
-          of variables contributed more evenly.
+          This points toward the value of geographically informed
+          research and public health planning. A single national
+          average can obscure differences in the conditions
+          communities face and the resources available to them.
         </p>
 
         <p>
-          These findings suggest that the relationships between
-          community characteristics and ADRD prevalence are not
-          uniform across the country.
+          It also raises further questions: Which neighborhood
+          conditions matter at a more local scale? How do
+          transportation, access to care, and social resources
+          interact over time? And how might longitudinal data
+          help distinguish patterns that are predictive from
+          relationships that may be causal?
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- IMPLICATIONS -->
-  <section class="section">
-    <div class="container">
+    </section>
+
+
+    <!-- LIMITATIONS -->
+    <section class="section">
+
       <div class="section-heading">
-        <div class="eyebrow">05 · Why it matters</div>
-        <h2>From geographic patterns to better questions.</h2>
+        <div class="section-number">06 / Limitations + reflection</div>
+        <div>
+          <h2>What this analysis can, and cannot, tell us.</h2>
+        </div>
       </div>
 
-      <div class="content">
+      <div class="body-copy">
         <p>
-          Together, these studies highlight the importance of
-          considering the environments and social conditions
-          surrounding individuals when examining population health.
+          The machine learning study used cross-sectional
+          county-level data. Because the unit of analysis was
+          the county, observed relationships may not reflect
+          individual-level experiences, and county averages
+          can conceal meaningful differences within communities.
+          The analysis also could not establish temporal or
+          causal relationships.
         </p>
 
         <p>
-          Geographic patterns can help researchers identify
-          communities that warrant further investigation and
-          explore where prevention-oriented approaches may
-          be worth considering.
+          The authors noted that the SHAP findings should be
+          treated as exploratory and hypothesis-generating,
+          rather than as evidence of causality or a direct
+          basis for intervention decisions. Future work could
+          benefit from finer geographic data, longitudinal
+          measures, and methods that account for spatial
+          dependencies and uncertainty.
         </p>
 
-        <p>
-          The findings do not establish that any particular
-          environmental or social characteristic causes
-          Alzheimer's disease. Instead, they offer a way
-          to identify patterns, generate hypotheses, and
-          guide future research.
+        <p class="closing">
+          For me, the larger lesson is that understanding health
+          means looking beyond the outcome itself. It means asking
+          what surrounds people, how those conditions differ across
+          places, and what those differences might help us
+          investigate next.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- REFLECTION -->
-  <section class="section">
-    <div class="container">
-      <div class="reflection">
-        <div class="eyebrow">A reflection</div>
-        <p>
-          One of the most interesting parts of this work was
-          recognizing how much context matters when interpreting
-          health data.
-        </p>
-        <p>
-          A national average can be useful, but it can also
-          obscure meaningful differences between communities.
-          Looking more closely revealed a more complicated picture
-          and reinforced my interest in understanding not just
-          health outcomes, but the conditions that surround them.
-        </p>
-        <p>
-          For me, this is part of what makes population health
-          research meaningful: the opportunity to look beyond
-          the immediate problem and ask what else might be
-          shaping it.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PUBLICATIONS -->
-  <section class="section">
-    <div class="container">
+
+    <!-- PUBLICATIONS -->
+    <section class="section">
+
       <div class="section-heading">
-        <div class="eyebrow">Research publications</div>
-        <h2>Further reading.</h2>
+        <div class="section-number">07 / Publications</div>
+        <div>
+          <h2>The research behind the case study.</h2>
+        </div>
       </div>
 
       <div class="publications">
-        <div class="publication">
-          <h3>Rural–urban disparities of Alzheimer's disease and related dementias: A scoping review</h3>
-          <p>
-            Mackenzie Kramer, Maxwell Cutty, Sara Knox,
-            Alexander V. Alekseyenko, and Abolfazl Mollalo.
-            Alzheimer's & Dementia: Translational Research & Clinical Interventions, 2025.
-          </p>
-          <a href="https://doi.org/10.1002/trc2.70047"
-             target="_blank" rel="noopener noreferrer">
-            DOI: 10.1002/trc2.70047
-          </a>
-        </div>
 
-        <div class="publication">
-          <h3>The role of built and social environments in Alzheimer's disease dementia prevalence in the United States: A machine learning approach</h3>
+        <article class="publication">
+          <div class="pub-type">First-author · Scoping review</div>
+
+          <h3>
+            Rural–urban disparities of Alzheimer's disease and
+            related dementias: A scoping review
+          </h3>
+
           <p>
-            Mackenzie Kramer, Alexander V. Alekseyenko,
-            and Abe Mollalo. Journal of Alzheimer's Disease, 2025.
+            <em>
+              Alzheimer's & Dementia: Translational Research
+              & Clinical Interventions
+            </em>,
+            2025, 11, e70047.
           </p>
-          <a href="https://doi.org/10.1177/13872877251372144"
-             target="_blank" rel="noopener noreferrer">
-            DOI: 10.1177/13872877251372144
+
+          <a
+            href="https://doi.org/10.1002/trc2.70047"
+            target="_blank"
+            rel="noopener"
+          >
+            Read the publication ↗
           </a>
-        </div>
+        </article>
+
+        <article class="publication">
+          <div class="pub-type">First-author · Machine learning study</div>
+
+          <h3>
+            The role of built and social environments in
+            Alzheimer's disease dementia prevalence in the
+            United States: A machine learning approach
+          </h3>
+
+          <p>
+            <em>Journal of Alzheimer's Disease</em>,
+            2025, 107(4), 1693–1705.
+          </p>
+
+          <a
+            href="https://doi.org/10.1177/13872877251372144"
+            target="_blank"
+            rel="noopener"
+          >
+            Read the publication ↗
+          </a>
+        </article>
+
       </div>
-    </div>
-  </section>
 
-</main>
+    </section>
 
-<footer>
-  <div class="container">
-    © 2026 Mackenzie Kramer ·
-    <a href="index.html">Return to portfolio</a>
-  </div>
-</footer>
+  </main>
+
+  <footer class="site-footer">
+    <span>© Mackenzie Kramer</span>
+    <a href="index.html#projects">Return to selected work ↑</a>
+  </footer>
 
 </body>
 </html>
