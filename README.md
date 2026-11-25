@@ -1,3 +1,3 @@
 # Mackenzie Kramer — Portfolio
 
-A warm, editorial-style personal portfolio built with plain HTML and CSS for GitHub Pages.
+An editorial-style personal portfolio built to highlight my background, interests, and personal approach to solving complex challenges within healthcare and personal well-being.
